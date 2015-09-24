@@ -56,6 +56,8 @@ module.exports = function(options) {
 	}, function(cb) {
 		if (out.length > 0) {
 			gutil.log(out.join('\n'));
+			this.emit('error', new gutil.PluginError('gulp-htmllint', 'HTML Linting failed'));
+			this.emit('end');
 		}
 
 		cb();
